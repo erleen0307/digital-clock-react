@@ -8,7 +8,7 @@ A sleek digital clock built with React, featuring live time updates, date displa
 
 Check out the live version here:
 
-👉 [Add Deployment Link Here]
+👉 [Digital Clock](https://erleen0307.github.io/digital-clock-react/)
 
 ---
 
