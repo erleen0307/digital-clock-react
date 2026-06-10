@@ -1,0 +1,70 @@
+rough work
+step 1 - useState logic
+const [time, setTime] = useState(new Date());
+keep hour, min, sec in one time variable only - easier
+
+step 2 - setInterval logic 
+const id = setInterval(() => {
+    new Date();
+    }, 1000);
+get current time again after every second
+    
+step 3 - update useState
+setTime(new Date())
+no manual increment logic needed here 
+
+step 4 - useEffect logic
+useEffect(() => {
+    update state here
+    add cleanup function for interval
+    return(() => {
+        clearInterval(id);})
+    }, [])
+
+on mount:
+    start interval
+
+every 1 second:
+    update state with current time - re render the UI
+
+on unmount:
+    stop interval
+
+step 5 - cleanup
+return(() => {
+    clearInterval(id); -- stop the updation in bg when UI is gone 
+    })
+
+1. Store current time in state
+2. Start interval once
+3. Every second → set state = new Date()
+4. React re-renders UI automatically
+5. Cleanup interval on unmount
+
+Every 1000ms:
+    ask system → "what time is it right now?"
+    update UI with that value
+
+App loads
+   ↓
+setTime = current Date
+   ↓
+useEffect runs once
+   ↓
+start interval
+   ↓
+every 1 sec:
+    setTime(new Date())
+   ↓
+state updates → React re-renders UI
+   ↓
+cleanup stops interval when needed
+
+
+Only ONE state variable (time)
+ One setInterval
+ Interval inside useEffect
+ Empty dependency array []
+ Cleanup present
+ No manual increment logic anywhere
+ UI only formats time
